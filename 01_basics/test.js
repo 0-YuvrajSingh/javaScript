@@ -1,1 +1,0 @@
-console.log("Master Control Unlock");
