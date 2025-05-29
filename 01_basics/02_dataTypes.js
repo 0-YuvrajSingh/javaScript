@@ -22,4 +22,57 @@ console.log(typeof null);
 console.log(typeof undefined);
 //It show error;
 
+// dataTypes : Primitive  || Non-Primitive
+
+/* Primitive dataType (7):
+   -> string,
+   -> number,
+   -> boolean,
+   -> null
+   -> undefined,
+   -> bigint
+   -> symbol
+*/
+
+/* Non-Primitive dataType [Reference dataType] (3):
+   -> Array,
+   -> Object,
+   -> Functions
+*/
+
+const id1 = Symbol('$');
+const id2 = Symbol('$');
+console.log(typeof(id1));
+
+
+console.log(id1 === id2);
+/* Will result in false because both will generate different
+   value i.e.,  return different value whether same thing is inside.
+*/
+
+const bigNumber = 348209032912345n;
+console.log(typeof(bigNumber));
+// bigint ends with n at last;
+
+// Array:
+const heroes = ["Ben 10", "SpiderMan", "BatMan"];
+console.log(typeof(heroes));
+
+// Objects (Any thing inside {} is taking it well is termed as object):
+const hero = {
+    name: "Ben 10",
+    age : 17,
+    power: "Ultimatrix",
+    alias: "Saviour of the Universe"
+};
+console.log(hero);
+
+// It is a key-value pair dataType
+
+// Function:
+const myHero = function(){
+    console.log(typeof(hero));
+}
+console.log(myHero);
+
 
