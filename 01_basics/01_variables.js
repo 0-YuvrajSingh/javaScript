@@ -10,3 +10,5 @@ without giving it a value. */
 
 console.table([userId, userName, userPassword, userState]);
 //userState is undefined beacause no value declared.
+
+// we can also declare without let var const if we are not using use strict; 
