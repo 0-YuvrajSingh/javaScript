@@ -74,5 +74,4 @@ const myHero = function(){
     console.log(typeof(hero));
 }
 console.log(myHero);
-
-
+//typeof(null) => object;
