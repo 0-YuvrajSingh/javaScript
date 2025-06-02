@@ -23,3 +23,39 @@ console.log(c); // Will print 30 that is why we do not use var.
 /* Note : if we check global/core scope of a browser and in code 
    environment run via node it will be different.
 */
+/* ******************** Nested Scope ******************* */
+function one() {
+    const username = "Yuvraj";
+    
+    function two() {
+        const website = "GitHub";
+        console.log(username);
+    }
+    // console.log(website) Out of Scope
+    two()
+}
+one()
+
+// Another example : 
+if (true) {
+    const username = "Yuvraj";
+    if (username === "Yuvraj"){
+        const website = "GitHub";
+        console.log(username + " " + website);
+    }
+    // console.log(website); => Out of scope 
+}
+// console.log(username); => Out of scope
+
+// Mini-Hosting(just a brief will explain in future) :
+
+addOne(5); // Will not give Error
+function addOne(num){
+    return num + 1;
+}
+
+// addTwo(5); => Will Show Error
+const addTwo = function(num){
+    return num + 2;
+} // This way is also called an expression
+addTwo(5);
