@@ -1,0 +1,175 @@
+📘 JavaScript Execution Context & Call Stack
+
+──────────────────────────────────────────────
+🔥 JavaScript Nature
+
+- Single-threaded: JS can do one thing at a time.
+- Synchronous: Executes code line-by-line.
+- Non-blocking: Uses callbacks, promises, and async/await for efficiency.
+- Lexically scoped: Scope is defined by where code is written.
+
+──────────────────────────────────────────────
+🧠 Execution Context
+
+Every time JS runs code, it creates an **execution context**.
+
+🔹 Types of Execution Context:
+
+1. Global Execution Context (GEC)
+   - Created when JS starts.
+   - In browsers → tied to `window`.
+   - In Node.js → tied to `global`.
+   - `this` → refers to `window` (browser).
+
+2. Function Execution Context (FEC)
+   - Created every time a function is called.
+   - Has its own memory and `this` binding.
+
+3. Eval Execution Context
+   - Created by using `eval()` (rarely used and discouraged).
+
+──────────────────────────────────────────────
+🧾 Execution Context Lifecycle
+
+Each context runs in **two phases**:
+
+1. Memory Creation Phase:
+   - Variables → assigned `undefined`.
+   - Functions → full definition stored.
+   - `this` is determined.
+   - Scope chain is created.
+
+2. Execution Phase:
+   - Actual values assigned.
+   - Function code executed.
+   - If function is called, a new Execution Context is created.
+
+──────────────────────────────────────────────
+💡 Example:
+
+```js
+let val1 = 10;
+let val2 = 5;
+
+function addNum(num1, num2) {
+    let total = num1 + num2;
+    return total;
+}
+
+let result1 = addNum(val1, val2);
+let result2 = addNum(10, 2);
+──────────────────────────────────────────────
+🔹 Step-by-Step Execution:
+
+🔸 Global Execution Context is created
+
+👉 Memory Phase:
+val1 → undefined
+val2 → undefined
+addNum → function definition
+result1 → undefined
+result2 → undefined
+
+👉 Execution Phase:
+val1 = 10
+val2 = 5
+result1 = addNum(val1, val2)
+
+→ Function Execution Context is created:
+Memory Phase:
+num1 → undefined
+num2 → undefined
+total → undefined
+ Execution Phase:
+    num1 = 10  
+    num2 = 5  
+    total = 15  
+    return total (15 → result1)
+result2 = addNum(10, 2) (same steps → returns 12)
+
+──────────────────────────────────────────────
+📦 Call Stack (LIFO)
+
+Used to manage execution contexts.
+
+Stack:
+addNum (2nd call)
+-------------------------
+addNum (1st call)
+-------------------------
+Global Execution Context
+-------------------------
+
+Function calls are pushed onto the stack.
+
+After execution, they are popped off.
+
+Stack always starts and ends with the Global Execution Context.
+
+──────────────────────────────────────────────
+✅ Tips & Notes:
+
+Variables are hoisted with undefined, functions are hoisted with full definitions.
+
+Arrow functions don’t have their own this, arguments, or super.
+
+Eval context is rarely used — avoid eval() for security/performance reasons.
+
+Visualize call stack using browser dev tools (Sources → Call Stack tab).
+
+Recursive functions can cause stack overflow if base condition is missing.
+
+──────────────────────────────────────────────
+
+Personally written ones :
+When we give js any code first thing that is made is global execution context 
+given to this and anything has different this context and important one is browser and its global context is Window similarly node has different 
+global context for this.
+JS is Single-Threaded.
+1)Global Execution Context
+2)Function/Functional Execution Context
+3)Eval Execution Context
+
+Code is run in two phases:
+1)Memory Creation phase / Creation Phase -: Only memory is allocated to variables or other things no execution process.
+2)Execution Phase
+
+e.g., 
+let val1 = 10;
+let val2 = 5;
+function addNum(num1, num2){
+    let total  = num1 + num2;
+    return total;
+}
+let result1 = addNum(val1, val2);
+let result2 = addNum(10,2);
+Step 1 : Global Execution/Environment is allocated in this
+Step 2 : Memory phase :
+        val1 -> undefined
+        val2 -> undefined
+        addNum -> definition(everything inside function)
+        result1 -> undefined
+        result2 -> undefined
+    Cycle 1 ends here
+Step 3: Execution phase :
+        val1 <- 10
+        val2 <- 5
+        addNum -> same all above process are done for addNum 
+        everytime a function is called.
+        (Memory Phase : 
+            val1 -> undefined
+            val2 -> undefined
+            total -> undefined
+        Execution Phase:
+            num1 -> 10
+            num2 -> 5
+            total -> 15(this return to Global Execution Context)
+        Delete)
+        result1 <- 15
+        After another block like above we obtain:
+        result2 <- 12
+
+// Call Stack:
+
+A stack in which LIFO is followed with bottom most element is
+Global Execution Context then function come if executed then removed.
