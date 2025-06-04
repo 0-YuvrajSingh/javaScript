@@ -29,12 +29,12 @@ if (userEmail) {
 // To check if Array is Empty:
 const arrayEmpty = [];
 if (arrayEmpty.length === 0) {
-    console.log("Array Empty");
+    console.log("Array is Empty");
 }
 
 const emptyObject = {};
 if (Object.keys(emptyObject).length === 0){
-    console.log("Object Empty");
+    console.log("Object is Empty");
 }
 
 // Nullish Coalescing Operator (??): null undefined
