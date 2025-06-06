@@ -43,3 +43,10 @@ myCoding.forEach((item)=> {
     console.log(item.languageName);
     // console.log(objectName.property);
 })
+
+const values = coding.forEach( (item) => {
+    // console.log(item); returns undefined
+    return item;
+    // It also returns undefined
+})
+console.log(values);
