@@ -29,3 +29,5 @@ const userPublish = books.filter( (book) => {
     }
 });
 console.log(userPublish);
+
+// It works on a value based on condition.
