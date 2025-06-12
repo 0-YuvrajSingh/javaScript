@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <button id="stop"> Stop </button>
+</body>
+<script>
+
+    // setTimeout is a built-in JavaScript function that 
+    // allows you to execute a function once after a specified delay (in milliseconds).
+
+     const anyFunction = () => {
+        console.log("Printed after 2 second");
+    };
+    const ifNotExecutedUptoTimeLimit = setTimeout(anyFunction, 2000);
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        clearTimeout(ifNotExecutedUptoTimeLimit);
+        console.log("Stopped the anyFunction");
+    })
+    // clearTimeout is a JavaScript method used to cancel
+    // a timer that was previously established by setTimeout.
+    
+    
+    // setTimeout(function, delay, param1, param2, ...);
+    // param1, param2, ... – Optional parameters passed to the function when it runs.
+
+
+   
+
+</script>
+</html>
