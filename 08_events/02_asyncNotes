@@ -1,0 +1,61 @@
+                🟡 JavaScript Execution Model
+
+✅ Default Nature:
+Synchronous: Executes one line at a time in sequence.
+
+Single-threaded: Only one task is executed at a time.
+
+Runs in a single execution context (one function runs at a time).
+
+🧠 Each operation waits for the previous one to finish before continuing.
+
+🧾 Example:
+
+console.log(1);
+console.log(2);
+Output will always be 1 then 2, because it’s synchronous.
+
+🔄 Execution Environment
+Memory Heap: Stores variables and data.
+
+Call Stack: Keeps track of function calls (Last-In-First-Out).
+
+            🟥 Blocking vs 🟩 Non-Blocking Code
+            
+Blocking Code	Non-Blocking Code
+❌ Blocks the flow of program	✅ Doesn’t block the execution flow
+readFileSync()	readFileAsync()
+Waits for result	Registers a callback
+
+🧠 JS Engine + Event Loop (Async Handling)
+📦 Inside the JS Engine
+Memory Heap (stores data).
+
+Call Stack (executes functions).
+
+🌐 Web API (Browser environment)
+Handles DOM APIs, setTimeout, setInterval, and fetch.
+
+After completion, it registers callbacks.
+
+📤 Task Queue
+Holds callbacks until the Call Stack is empty.
+
+🔁 Event Loop
+Continuously checks: If Call Stack is empty ➜ push callback from Task Queue.
+
+⬆️ Promise Callbacks
+Sent to Microtask Queue (high priority).
+
+Executed before Task Queue callbacks.
+
+🔁 Async Flow Summary
+JS encounters async code (e.g., setTimeout, fetch).
+
+Offloaded to Web APIs.
+
+Once ready, callback goes to Task Queue or Microtask Queue.
+
+Event Loop adds it to Call Stack when it's empty.
+
+Callback is executed.
