@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> HTML Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+
+    // attachEvent() - was used previously in windoes explorer.
+    // jQuery - onEventListener
+
+    document.getElementById('images').addEventListener('click', (e) => {
+        console.log("Clicked Inside the ul");
+    }, false);
+
+    document.getElementById('owl').addEventListener('click', (e) => {
+        console.log("Inside the ul, owl is clicked");
+    }, false);
+
+    /*, SO what is printed first :
+       It is decided by event propogation / bubbling 
+       ****** IF THERE IS false IN 3rd part of addEventListener ******
+       1 => Inside the ul, owl is clicked : is printed
+       2 => Clicked Inside the ul
+       ****** IF THERE IS true IN 3rd part of addEventListener ******
+       1 => Clicked Inside the ul
+       2 => Inside the ul, owl is clicked : is printed
+    */
+
+    // e.stopPropogation() - to prevent propogation/bubbling.
+       
+    document.getElementById('google').addEventListener( 'click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("google link is clicked");        
+        alert("google is redirecting,  preventing redirect!");
+    }, false);
+
+
+    // I click image and it vanishes :
+
+    document.querySelector('#images').addEventListener( 'click', (e) => {
+        if (e.target.tagName === 'IMG'){
+            let removeImg = e.target.parentNode;
+            removeImg.remove();
+            /* Another Method:
+            removeImg.parentNode.removeChild(removeImg); => To remove
+            */
+            alert(`${e.target.id} will be removed`);
+        }
+        else{
+            alert(`HTML object ${e.target.tagName} is clicked`);
+        }
+    }, false);
+    
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+</script>
+</html>
