@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval | clearInterval</title>
+</head>
+<body>
+    <button id="start">Start</button>
+    <button id="stop"> Stop </button>
+</body>
+<script>
+
+    let intervalId;
+    
+    const tellDate = (str) => {
+            console.log(str, new Date().toLocaleTimeString());
+        };
+
+    document.querySelector('#start').addEventListener('click', () => {
+        intervalId = setInterval( () => {
+            tellDate("Current Time : ")
+        }, 1000)
+    });
+    
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        clearInterval(intervalId);
+        console.log("Interval Stopped");
+    });
+    
+
+</script>
+</html>
