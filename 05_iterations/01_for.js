@@ -27,7 +27,7 @@ for (let index = 0; index < myHeroes.length; index++) {
 
 for (let index = 0; index < 10; index++) {
     if(index == 5){
-        console.log('5 Detected - Exit from loop');
+        console.log('5 Detected in the loop - Exit!');
         break;
         /* The break statement exits the current loop (or switch) immediately,
            even if the loop condition is still true.
