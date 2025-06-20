@@ -80,7 +80,7 @@ promiseFour
 })
 .catch((error) => {
     console.log(error);
-    // catch to handle errors
+    // catch to handle errors that might be thrown
 })
 .finally(() => {
     console.log("The Promise is either resolved or rejected");
