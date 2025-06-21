@@ -17,11 +17,11 @@ promiseOne.then(function(){
 
 new Promise((resolve, reject) => {
     setTimeout( () => {
-        console.log("Async Task 2");
+        console.log("Async Task-2");
         resolve();
     }, 1000);
 }).then( () => {
-    console.log("Async Task 2 resolved");
+    console.log("Async Task-2 resolved");
 });
 
 const promiseSecond = new Promise( (resolve, reject) => {
