@@ -88,7 +88,7 @@ promiseFour
 
 const promiseFive = new Promise((resolve, reject) => {
     setTimeout(() => {
-        let error = true;
+        let error = false; // try true will show error
         if(!error) {
             resolve({username: "JavaScript",
                 password: Math.floor(Math.random())* 100
@@ -98,12 +98,3 @@ const promiseFive = new Promise((resolve, reject) => {
         }
     }, 2000)
 });
-
-async function consumePromiseFive(){
-    try {
-        const response = await promiseFive
-        console.log(response);
-    } catch (error) {
-        console.log(error);
-    }
-}
